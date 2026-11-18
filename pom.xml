@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.sharpfy</groupId>
-    <artifactId>nextapi-java</artifactId>
+    <artifactId>nextapi</artifactId>
     <version>0.2.0</version>
     <packaging>jar</packaging>
 
@@ -15,6 +15,7 @@
     <scm>
         <url>https://github.com/sharpfytecnologia/nextapi-sdk-java</url>
         <connection>scm:git:https://github.com/sharpfytecnologia/nextapi-sdk-java.git</connection>
+        <developerConnection>scm:git:https://github.com/sharpfytecnologia/nextapi-sdk-java.git</developerConnection>
     </scm>
 
     <licenses>
@@ -29,6 +30,8 @@
             <id>sharpfy</id>
             <name>Sharpfy</name>
             <email>contato@sharpfy.com.br</email>
+            <organization>Sharpfy</organization>
+            <organizationUrl>https://nextapi.com.br</organizationUrl>
         </developer>
     </developers>
 
@@ -100,4 +103,44 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Só na publicação (workflow do espelho): assina com a chave de MAVEN_GPG_KEY/MAVEN_GPG_PASSPHRASE, sem gpg
+         instalado (signer bc), e envia ao Maven Central com o token do servidor "central". -->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.7</version>
+                        <configuration>
+                            <signer>bc</signer>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.9.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

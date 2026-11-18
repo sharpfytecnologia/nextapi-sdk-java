@@ -1,4 +1,4 @@
-# NextAPI para Java (`br.com.sharpfy:nextapi-java`)
+# NextAPI para Java (`br.com.sharpfy:nextapi`)
 
 SDK oficial da [NextAPI](https://nextapi.com.br) para Java 17+: CNPJ (inclusive alfanumérico), Simples Nacional, inscrições estaduais, conformidade, sócios, CEP com busca geográfica, pesquisa de empresas, localidades, mercado e créditos. Usa o `java.net.http.HttpClient` do JDK; a única dependência é o Jackson. As respostas são `record`s.
 
@@ -14,7 +14,7 @@ Maven:
 ```xml
 <dependency>
   <groupId>br.com.sharpfy</groupId>
-  <artifactId>nextapi-java</artifactId>
+  <artifactId>nextapi</artifactId>
   <version>0.2.0</version>
 </dependency>
 ```
@@ -22,7 +22,7 @@ Maven:
 Gradle:
 
 ```kotlin
-implementation("br.com.sharpfy:nextapi-java:0.2.0")
+implementation("br.com.sharpfy:nextapi:0.2.0")
 ```
 
 ## Chave de API
